@@ -76,7 +76,10 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-
+	'username' => 'concejos_digesto',
+	'password' => 'adacHERiStAr',
+	'database' => 'concejos_digesto',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
