@@ -55,8 +55,7 @@
                         <th> <?php echo $item['fechapromulgacion'] ?> </th>
                         <th> <?php echo $item['autor'] ?> </th>
                         <th> <?php echo $item['contenido'] ?> </th>
-                        <th> <?php echo $item['archivo'] ?> </th>
-                        <!--<th> <?php //echo anchor('trabajo/edit/'.$item['idTrabajo'], 'VER', ''); ?> </th>-->
+                        <th> <?php echo anchor_popup(base_url('/normas/'.$item['archivo']), $item['archivo'], ''); ?> </th>
                         
                     </tr>
 
