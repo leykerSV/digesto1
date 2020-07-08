@@ -15,54 +15,59 @@
 			<button type="submit" class="btn btn-success">Buscar</button>
         </div>
 	</div>
+  <?php if(isset($contador)){?>
+    <div class="alert alert-info">Se encontraron <?php echo $contador ?> Normas que coiciden con el criterio de búsqueda</div>
+  <?php } ?>
 	
 <?php
 	if(isset($listaNormas)) {
 
 ?>
-	<div class="table-responsive">
-        <table class="table table-striped">
-         <thead  class="thead-dark">
-         <tr>
-            <th scope="col">Tipo</th>
-            <th scope="col">N° Norma</th> 
-            <th scope="col">Expediente</th>  
-            <th scope="col">F. Sanción</th>
-            <th scope="col">Exp. DEM</th>
-            <th scope="col">F. Promulgacion</th>
-            <th scope="col">Autor</th>
-            <th scope="col">Contenido</th>
-            <th scope="col">Archivo</th>
-          </tr>
-        
-         </thead>
-         <tbody>
-            <?php foreach ($listaNormas as $item): ?>
-                    <tr>
-                        <?php 
-                          foreach($all_tipo as $tipo)
-                          {
-                            //if ($tipo['codigo']==$item['tipo']){
-                              //$tiponorma=$tipo['nombre'];
-                            //}
-                          } 
-                        ?>
-                        <th> <?php echo $item['tipo'] ?> </th>
-                        <th> <?php echo $item['numero'] ?> </th>
-                        <th> <?php echo $item['expedientechm'] ?> </th>
-                        <th> <?php echo $item['fechasancion'] ?> </th>
-                        <th> <?php echo $item['expedientedem'] ?> </th>
-                        <th> <?php echo $item['fechapromulgacion'] ?> </th>
-                        <th> <?php echo $item['autor'] ?> </th>
-                        <th> <?php echo $item['contenido'] ?> </th>
-                        <th> <?php echo anchor_popup(base_url('/normas/'.$item['archivo']), $item['archivo'], ''); ?> </th>
-                        
-                    </tr>
+  <nav aria-label="Page navigation example">
+    <div class="table-responsive">
+          <table class="table table-striped">
+          <thead  class="thead-dark">
+          <tr>
+              <th scope="col">Tipo</th>
+              <th scope="col">N° Norma</th> 
+              <th scope="col">Expediente</th>  
+              <th scope="col">F. Sanción</th>
+              <th scope="col">Exp. DEM</th>
+              <th scope="col">F. Promulgacion</th>
+              <th scope="col">Autor</th>
+              <th scope="col">Contenido</th>
+              <th scope="col">Archivo</th>
+            </tr>
+          
+          </thead>
+          <tbody>
+              <?php foreach ($listaNormas as $item): ?>
+                      <tr>
+                          <?php 
+                            foreach($all_tipo as $tipo)
+                            {
+                              //if ($tipo['codigo']==$item['tipo']){
+                                //$tiponorma=$tipo['nombre'];
+                              //}
+                            } 
+                          ?>
+                          <th> <?php echo $item['tipo'] ?> </th>
+                          <th> <?php echo $item['numero'] ?> </th>
+                          <th> <?php echo $item['expedientechm'] ?> </th>
+                          <th><?php echo date('d-m-Y',strtotime($item['fechasancion'])) ?></th> 
+                          <th> <?php echo $item['expedientedem'] ?> </th>
+                          <th><?php echo date('d-m-Y',strtotime($item['fechapromulgacion'])) ?></th> 
+                          <th> <?php echo $item['autor'] ?> </th>
+                          <th> <?php echo $item['contenido'] ?> </th>
+                          <th> <?php echo anchor_popup(base_url('/normas/'.$item['archivo']), $item['archivo'], ''); ?> </th>
+                          
+                      </tr>
 
-            <?php endforeach; ?>
-          </tbody>
-		</table>
-	</div>
+              <?php endforeach; ?>
+            </tbody>
+      </table>
+    </div>
+  </nav>
 
 	<?php } ?>
 

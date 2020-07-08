@@ -18,11 +18,12 @@ class Inicio extends CI_Controller {
             $this->load->model('digestodb','',TRUE);
             $resnormas = $this->digestodb->busqueda_norma($this->input->post('busqueda'));
             $data['listaNormas'] = json_decode(json_encode($resnormas), True);
+            $data['contador']=count($resnormas);
         }  
 
         $data['all_tipo'] = $this->digestodb->get_tipo();
         $data['titulo']="Digesto 0.1";
-        $data['encabezado']="Digesto Municipal de Santo Tomé";
+        $data['encabezado']="Digesto Municipal de Santo Tomé -  V. 0.1";
         $data['_view'] = $this->load->view('principal/busqueda', $data, true);
               
         $this->load->view('template/header',$data);
