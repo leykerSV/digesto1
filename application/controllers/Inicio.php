@@ -12,11 +12,16 @@ class Inicio extends CI_Controller {
         // check if the trabajo exists before trying to edit it
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('busqueda','Busqueda','required');  
- 
-        if($this->form_validation->run()){
+        //$this->form_validation->set_rules('busqueda','Busqueda');
+        //$this->form_validation->set_rules('busquedanorma','Busqueda');  
+
+        if((is_null($this->input->post('busqueda'))==false) or (is_null($this->input->post('busquedanorma'))==false)){
             $this->load->model('digestodb','',TRUE);
-            $resnormas = $this->digestodb->busqueda_norma($this->input->post('busqueda'));
+            if ($this->input->post('busquedanorma')<>""){
+                $resnormas = $this->digestodb->busqueda_norma_numero($this->input->post('busquedanorma'));
+            }else{
+                $resnormas = $this->digestodb->busqueda_norma($this->input->post('busqueda'));
+            }
             $data['listaNormas'] = json_decode(json_encode($resnormas), True);
             $data['contador']=count($resnormas);
         }  

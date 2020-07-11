@@ -36,7 +36,7 @@ Class Digestodb extends CI_Model
 
 
     /**
-    * Carga los trabajos del Usuario.
+    * Busca Normas.
     * 
     * 
     * @author Leyker
@@ -50,9 +50,31 @@ Class Digestodb extends CI_Model
         $this->db->select('*');
         $this->db->from('Normas');
         $this->db->where('contenido like ' . "'%" . $texto . "%'");
-        $this->db->order_by('fechapromulgacion');
+        $this->db->order_by('fechapromulgacion', 'DESC');
         $query = $this->db->get();
         $a=$query->result();
         return $query->result();
     }
+
+        /**
+    * Busca Normas.
+    * 
+    * 
+    * @author Leyker
+    * @param string $username Nombre del Usuario.
+    * @param string $password Pass del usuario.  
+    * @return boolean Devuelve True si los datos son correctos.
+    */
+    function busqueda_norma_numero($texto)
+    {  
+        $this->load->database();       
+        $this->db->select('*');
+        $this->db->from('Normas');
+        $this->db->where('numero = '.$texto);
+        $this->db->order_by('fechapromulgacion', 'DESC');
+        $query = $this->db->get();
+        $a=$query->result();
+        return $query->result();
+    }
+
 }
