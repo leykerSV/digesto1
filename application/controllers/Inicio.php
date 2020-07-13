@@ -14,13 +14,23 @@ class Inicio extends CI_Controller {
 
         //$this->form_validation->set_rules('busqueda','Busqueda');
         //$this->form_validation->set_rules('busquedanorma','Busqueda');  
+        $uno=$this->input->post('busqueda');
+        $dos=$this->input->post('busquedanorma');
 
-        if((is_null($this->input->post('busqueda'))==false) or (is_null($this->input->post('busquedanorma'))==false)){
+        if(($uno<>null) or ($uno<>"") or ($dos<>null) or ($dos<>"")){
+            if(!empty($_POST['tipo_norma'])){
+                // Ciclo para mostrar las casillas checked checkbox.
+                foreach($_POST['tipo_norma'] as $selected){
+                    $tipo[]=$selected;
+                }
+            }else{
+                $tipo=null;
+            }
             $this->load->model('digestodb','',TRUE);
             if ($this->input->post('busquedanorma')<>""){
-                $resnormas = $this->digestodb->busqueda_norma_numero($this->input->post('busquedanorma'));
+                $resnormas = $this->digestodb->busqueda_norma_numero($this->input->post('busquedanorma'),$tipo);    
             }else{
-                $resnormas = $this->digestodb->busqueda_norma($this->input->post('busqueda'));
+                $resnormas = $this->digestodb->busqueda_norma($this->input->post('busqueda'),$tipo);
             }
             $data['listaNormas'] = json_decode(json_encode($resnormas), True);
             $data['contador']=count($resnormas);
