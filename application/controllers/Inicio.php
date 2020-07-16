@@ -16,6 +16,8 @@ class Inicio extends CI_Controller {
         //$this->form_validation->set_rules('busquedanorma','Busqueda');  
         $uno=$this->input->post('busqueda');
         $dos=$this->input->post('busquedanorma');
+        $desde=$this->input->post('fechadesde');
+        $hasta=$this->input->post('fechahasta');
 
         if(($uno<>null) or ($uno<>"") or ($dos<>null) or ($dos<>"")){
             if(!empty($_POST['tipo_norma'])){

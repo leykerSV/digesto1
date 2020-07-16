@@ -95,7 +95,8 @@
               <th width=120 scope="col">F. Promulgacion</th>
 
               <th scope="col">Contenido</th>
-              <th scope="col">Archivo</th>
+              <th scope="col">VER</th>
+              <th scope="col">BAJAR</th>
             </tr>
           
           </thead>
@@ -128,9 +129,11 @@
                           
                           <th> <?php echo $item['contenido'] ?> </th>
                           <?php if ($item['archivo']==""){ 
-                            echo '<th>Sin Archivo Asociado</th>';    
+                            echo '<th>Sin Archivo Asociado</th>';   
+                            echo '<th>Sin Archivo Asociado</th>';  
                           }else{ ?>
-                            <th> <?php echo anchor_popup(base_url('/normas/'.$item['archivo']), $item['archivo'], ''); ?> </th>
+                            <th> <?php echo anchor_popup(base_url('/normas/'.$item['archivo']), 'VER', ''); ?> </th>
+                            <th><a href="<?php echo base_url('/normas/'.$item['archivo']); ?>" download="<?php echo $item['archivo']; ?>">BAJAR</a></th>
                           <?php } ?>
                           
                       </tr>
