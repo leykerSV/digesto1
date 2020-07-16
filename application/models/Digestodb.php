@@ -44,7 +44,7 @@ Class Digestodb extends CI_Model
     * @param string $password Pass del usuario.  
     * @return boolean Devuelve True si los datos son correctos.
     */
-    function busqueda_norma($texto,$tipo)
+    function busqueda_norma($texto,$tipo,$desde,$hasta)
     {  
         $this->load->database();       
         $this->db->select('*');
@@ -54,6 +54,12 @@ Class Digestodb extends CI_Model
             foreach ($tipo as $opcion) {
                 $this->db->where('tipo = '.$opcion);    
             }
+        }
+        
+        if ($desde<>'' and $hasta<>''){
+            $desde=date('Y-'.'01-'.'01',strtotime($desde));
+            $hasta=date('Y-'.'12-'.'31',strtotime($hasta));
+            $this->db->where('fechapromulgacion between $desde and '.$hasta);
         }
         $this->db->order_by('fechapromulgacion', 'DESC');
         $query = $this->db->get();
@@ -70,7 +76,7 @@ Class Digestodb extends CI_Model
     * @param string $password Pass del usuario.  
     * @return boolean Devuelve True si los datos son correctos.
     */
-    function busqueda_norma_numero($texto,$tipo)
+    function busqueda_norma_numero($texto,$tipo,$desde,$hasta)
     {  
         $this->load->database();       
         $this->db->select('*');
@@ -80,6 +86,12 @@ Class Digestodb extends CI_Model
             foreach ($tipo as $opcion) {
                 $this->db->where('tipo = '.$opcion);    
             }
+        }
+
+        if ($desde<>'' and $hasta<>''){
+            $desde=date('Y-'.'01-'.'01',strtotime($desde));
+            $hasta=date('Y-'.'12-'.'31',strtotime($hasta));
+            $this->db->where('fechapromulgacion between '.$desde.' and '.$hasta);
         }
         $this->db->order_by('fechapromulgacion', 'DESC');
         $query = $this->db->get();

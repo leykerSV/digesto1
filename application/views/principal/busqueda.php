@@ -56,8 +56,8 @@
         </div>
         <div class="card-body">
           <div class="input-group mb-3">
-            <input type="text" name="añodesde" value="" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="añodesde" placeholder="Año Desde" />
-            <input type="text" name="añohasta" value="" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="añohasta" placeholder="Año Hasta" />
+            <input type="text" name="fechadesde" value="" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="fechadesde" placeholder="Año Desde" />
+            <input type="text" name="fechahasta" value="" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="fechahasta" placeholder="Año Hasta" />
           </div>
         </div>
       </div>

@@ -30,9 +30,9 @@ class Inicio extends CI_Controller {
             }
             $this->load->model('digestodb','',TRUE);
             if ($this->input->post('busquedanorma')<>""){
-                $resnormas = $this->digestodb->busqueda_norma_numero($this->input->post('busquedanorma'),$tipo);    
+                $resnormas = $this->digestodb->busqueda_norma_numero($this->input->post('busquedanorma'),$tipo,$desde,$hasta);    
             }else{
-                $resnormas = $this->digestodb->busqueda_norma($this->input->post('busqueda'),$tipo);
+                $resnormas = $this->digestodb->busqueda_norma($this->input->post('busqueda'),$tipo,$desde,$hasta);
             }
             $data['listaNormas'] = json_decode(json_encode($resnormas), True);
             $data['contador']=count($resnormas);
