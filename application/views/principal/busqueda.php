@@ -87,6 +87,7 @@
           <table class="table table-striped">
           <thead  class="thead-dark">
           <tr>
+              <th scope="col">Detalles</th>
               <th scope="col">Tipo</th>
               <th scope="col">N° Norma</th> 
 
@@ -103,6 +104,7 @@
           <tbody>
               <?php foreach ($listaNormas as $item): ?>
                       <tr>
+                          <th><a href="<?php anchor(); ?>"</a>VER</th>
                           <?php 
                             foreach($all_tipo as $tipo)
                             {

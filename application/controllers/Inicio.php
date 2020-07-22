@@ -50,4 +50,25 @@ class Inicio extends CI_Controller {
         
     }  
       
+
+    public function alta(){
+        $this->load->library('form_validation');
+    
+        $this->form_validation->set_rules('numero','Numero de Norma','required|numeric');
+        #$this->form_validation->set_rules('areaid','Area','required');
+    
+        if($this->form_validation->run()){              
+            echo 'Llegaste!!';
+        }  
+        $this->load->model('digestodb','',TRUE);
+        $data['all_tipo'] = $this->digestodb->get_tipo();
+        $this->load->view('template/header',$data);
+        $this->load->view('principal/alta');
+        $this->load->view('template/footer');
+    }
+
+    public function detalles($norma){
+
+    }
+
 }
