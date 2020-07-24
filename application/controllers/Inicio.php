@@ -68,7 +68,7 @@ class Inicio extends CI_Controller {
     }
 
     public function detalles($norma){
-
+        echo $norma;
     }
 
 }

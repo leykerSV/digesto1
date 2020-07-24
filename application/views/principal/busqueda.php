@@ -104,7 +104,7 @@
           <tbody>
               <?php foreach ($listaNormas as $item): ?>
                       <tr>
-                          <th><a href="<?php anchor(); ?>"</a>VER</th>
+                          <th> <?php echo anchor_popup('/inicio/detalles/'.$item['numero'], 'VER', ''); ?> </th>
                           <?php 
                             foreach($all_tipo as $tipo)
                             {
