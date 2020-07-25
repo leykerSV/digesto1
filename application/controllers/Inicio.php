@@ -67,8 +67,12 @@ class Inicio extends CI_Controller {
         $this->load->view('template/footer');
     }
 
-    public function detalles($norma){
-        echo $norma;
+    public function detalles($norma,$tipo){
+        echo $norma." ".$tipo;
+        $this->load->model('digestodb','',TRUE);
+        $relaciones = $this->digestodb->busqueda_relaciones($norma,$tipo);    
+        $data['listaNormas'] = json_decode(json_encode($relaciones), True);
+
     }
 
 }

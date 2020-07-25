@@ -96,7 +96,7 @@
               <th width=120 scope="col">F. Promulgacion</th>
 
               <th scope="col">Contenido</th>
-              <th scope="col">VER</th>
+              <th scope="col">LEER</th>
               <th scope="col">BAJAR</th>
             </tr>
           
@@ -104,7 +104,9 @@
           <tbody>
               <?php foreach ($listaNormas as $item): ?>
                       <tr>
-                          <th> <?php echo anchor_popup('/inicio/detalles/'.$item['numero'], 'VER', ''); ?> </th>
+                          <th> <?php
+                                $atts = array('width' => '800', 'height' => '600', 'scrollbars' => 'yes', 'status' => 'yes', 'resizable' => 'yes', 'screenx' => '20', 'screeny' => '20'); 
+                                echo anchor_popup('/inicio/detalles/'.$item['numero']."/".$item['tipo'], 'VER', $atts); ?> </th>
                           <?php 
                             foreach($all_tipo as $tipo)
                             {
@@ -134,8 +136,22 @@
                             echo '<th>Sin Archivo Asociado</th>';   
                             echo '<th>Sin Archivo Asociado</th>';  
                           }else{ ?>
-                            <th> <?php echo anchor_popup(base_url('/normas/'.$item['archivo']), 'VER', ''); ?> </th>
-                            <th><a href="<?php echo base_url('/normas/'.$item['archivo']); ?>" download="<?php echo $item['archivo']; ?>">BAJAR</a></th>
+                            <th><a href="<?php echo base_url('/normas/'.$item['archivo']); ?>" target="_blank">
+                            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-book-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
+                              <path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869z"/>
+                            </svg>
+                            </a>
+                            </th>
+
+                            <th><a href="<?php echo base_url('/normas/'.$item['archivo']); ?>" download="<?php echo $item['archivo']; ?>">
+                              <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-box-arrow-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M4.646 11.646a.5.5 0 0 1 .708 0L8 14.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
+                                <path fill-rule="evenodd" d="M8 4.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5z"/>
+                                <path fill-rule="evenodd" d="M2.5 2A1.5 1.5 0 0 1 4 .5h8A1.5 1.5 0 0 1 13.5 2v7a1.5 1.5 0 0 1-1.5 1.5h-1.5a.5.5 0 0 1 0-1H12a.5.5 0 0 0 .5-.5V2a.5.5 0 0 0-.5-.5H4a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h1.5a.5.5 0 0 1 0 1H4A1.5 1.5 0 0 1 2.5 9V2z"/>
+                              </svg>
+                            </a>
+                            </th>
                           <?php } ?>
                           
                       </tr>
