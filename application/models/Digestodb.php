@@ -101,10 +101,11 @@ Class Digestodb extends CI_Model
 
     function busqueda_relaciones($norma,$tipo){
         $this->load->database();
-        $sql = "CALL Relaciones(".$norma.", ".$tipo.")";
+        $sql = "call Relaciones(".$norma.", ".$tipo.")";
         $query=$this->db->query($sql);
-
         $a=$query->result();
+        $query->free_result();
+        $query->next_result();
         return $query->result();
     }
 }

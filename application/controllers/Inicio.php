@@ -68,11 +68,11 @@ class Inicio extends CI_Controller {
     }
 
     public function detalles($norma,$tipo){
-        echo $norma." ".$tipo;
         $this->load->model('digestodb','',TRUE);
         $relaciones = $this->digestodb->busqueda_relaciones($norma,$tipo);    
         $data['listaNormas'] = json_decode(json_encode($relaciones), True);
-
+        var_dump($data['listaNormas']);
+        die;
     }
 
 }
