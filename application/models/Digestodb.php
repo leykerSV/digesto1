@@ -49,7 +49,8 @@ Class Digestodb extends CI_Model
         $this->load->database();       
         $this->db->select('*');
         $this->db->from('Normas');
-        $this->db->where('contenido like ' . "'%" . $texto . "%'");
+        $this->db->like('contenido', $texto); 
+        #$this->db->where('contenido like ' . "'%" . $texto . "%'");
         if(!is_null($tipo)){
             foreach ($tipo as $opcion) {
                 $this->db->where('tipo = '.$opcion);    
@@ -57,9 +58,10 @@ Class Digestodb extends CI_Model
         }
         
         if ($desde<>'' and $hasta<>''){
-            $desde=date('Y-'.'01-'.'01',strtotime($desde));
-            $hasta=date('Y-'.'12-'.'31',strtotime($hasta));
-            $this->db->where('fechapromulgacion between $desde and '.$hasta);
+            $desde=date($desde.'-01-'.'01',strtotime($desde));
+            $hasta=date($hasta.'-12-'.'31',strtotime($hasta));
+            $a='fechapromulgacion between "'.$desde.'" and "'.$hasta.'"';
+            $this->db->where($a);
         }
         $this->db->order_by('fechapromulgacion', 'DESC');
         $query = $this->db->get();
@@ -89,11 +91,22 @@ Class Digestodb extends CI_Model
         }
 
         if ($desde<>'' and $hasta<>''){
-            $desde=date('Y-'.'01-'.'01',strtotime($desde));
-            $hasta=date('Y-'.'12-'.'31',strtotime($hasta));
-            $this->db->where('fechapromulgacion between '.$desde.' and '.$hasta);
+            $desde=date($desde.'-01-'.'01',strtotime($desde));
+            $hasta=date($hasta.'-12-'.'31',strtotime($hasta));
+            $a='fechapromulgacion between "'.$desde.'" and "'.$hasta.'"';
+            $this->db->where($a);
         }
         $this->db->order_by('fechapromulgacion', 'DESC');
+        $query = $this->db->get();
+        $a=$query->result();
+        return $query->result();
+    }
+
+    function devuelve_norma($numero){
+        $this->load->database();       
+        $this->db->select('*');
+        $this->db->from('Normas');
+        $this->db->where('numero = '.$texto);
         $query = $this->db->get();
         $a=$query->result();
         return $query->result();

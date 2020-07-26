@@ -56,8 +56,8 @@
         </div>
         <div class="card-body">
           <div class="input-group mb-3">
-            <input type="text" name="fechadesde" value="" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="fechadesde" placeholder="Año Desde" />
-            <input type="text" name="fechahasta" value="" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="fechahasta" placeholder="Año Hasta" />
+            <input type="text" name="fechadesde" id="fechadesde" value="" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="fechadesde" placeholder="Año Desde" />
+            <input type="text" name="fechahasta" id="fechahasta" value="" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="fechahasta" placeholder="Año Hasta" />
           </div>
         </div>
       </div>
@@ -87,15 +87,15 @@
           <table class="table table-striped">
           <thead  class="thead-dark">
           <tr>
-              <th scope="col">Detalles</th>
-              <th scope="col">Tipo</th>
-              <th scope="col">N° Norma</th> 
+              <th scope="col" width=90>N° Norma</th>
+              <th scope="col">Tipo</th>  
 
-              <th width=120 scope="col">F. Sanción</th>
+              <th width=120 scope="col">Sanción</th>
 
-              <th width=120 scope="col">F. Promulgacion</th>
+              <th width=120 scope="col">Promulgacion</th>
 
               <th scope="col">Contenido</th>
+              <th scope="col">Detalles</th>
               <th scope="col">LEER</th>
               <th scope="col">BAJAR</th>
             </tr>
@@ -104,9 +104,6 @@
           <tbody>
               <?php foreach ($listaNormas as $item): ?>
                       <tr>
-                          <th> <?php
-                                $atts = array('width' => '800', 'height' => '600', 'scrollbars' => 'yes', 'status' => 'yes', 'resizable' => 'yes', 'screenx' => '20', 'screeny' => '20'); 
-                                echo anchor_popup('/inicio/detalles/'.$item['numero']."/".$item['tipo'], 'VER', $atts); ?> </th>
                           <?php 
                             foreach($all_tipo as $tipo)
                             {
@@ -115,9 +112,8 @@
                               }
                             } 
                           ?>
-                          <th> <?php echo $tiponorma ?> </th>
                           <th> <?php echo $item['numero'] ?> </th>
-
+                          <th> <?php echo $tiponorma ?> </th>
                           <?php if (is_null($item['fechasancion'])){ 
                             echo '<th> -- </th>';    
                           }else{ ?>
@@ -130,12 +126,24 @@
                           }else{ ?>
                             <th><?php echo date('d-m-Y',strtotime($item['fechapromulgacion'])) ?></th> 
                           <?php } ?>
-                          
+
                           <th> <?php echo $item['contenido'] ?> </th>
+
+                          <th><a href="<?php echo base_url('index.php/inicio/detalles/'.$item['numero']."/".$item['tipo']); ?>" target="_blank">
+                              <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-receipt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+                                <path fill-rule="evenodd" d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+                              </svg>
+                            </a>
+                          </th>
+
+                          
                           <?php if ($item['archivo']==""){ 
                             echo '<th>Sin Archivo Asociado</th>';   
                             echo '<th>Sin Archivo Asociado</th>';  
                           }else{ ?>
+
+
                             <th><a href="<?php echo base_url('/normas/'.$item['archivo']); ?>" target="_blank">
                             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-book-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
