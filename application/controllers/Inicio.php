@@ -70,9 +70,9 @@ class Inicio extends CI_Controller {
     public function detalles($norma,$tipo){
         $this->load->model('digestodb','',TRUE);
         $relaciones = $this->digestodb->busqueda_relaciones($norma,$tipo);    
-        
-        $data['listaNormas'] = json_decode(json_encode($relaciones), True);
-        
+        $norma = $this->digestodb->devuelve_norma($norma,$tipo);
+        $data['relaciones'] = json_decode(json_encode($relaciones), True);
+        $data['norma'] = json_decode(json_encode($norma), True);
         $this->load->view('template/header',$data);
         $this->load->view('principal/detalles');
         $this->load->view('template/footer');

@@ -102,13 +102,13 @@ Class Digestodb extends CI_Model
         return $query->result();
     }
 
-    function devuelve_norma($numero){
+    function devuelve_norma($norma,$tipo){
         $this->load->database();       
-        $this->db->select('*');
-        $this->db->from('Normas');
-        $this->db->where('numero = '.$texto);
-        $query = $this->db->get();
+        $sql = "call Devuelvenorma(".$norma.", ".$tipo.")";
+        $query=$this->db->query($sql);
         $a=$query->result();
+        $query->free_result();
+        $query->next_result();
         return $query->result();
     }
 
