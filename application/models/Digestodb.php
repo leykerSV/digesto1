@@ -121,4 +121,14 @@ Class Digestodb extends CI_Model
         $query->next_result();
         return $query->result();
     }
+    
+    function busqueda_relacionesinversas($norma,$tipo){
+        $this->load->database();
+        $sql = "call Relacionesinversa(".$norma.", ".$tipo.")";
+        $query=$this->db->query($sql);
+        $a=$query->result();
+        $query->free_result();
+        $query->next_result();
+        return $query->result();
+    }
 }

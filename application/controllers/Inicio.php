@@ -49,7 +49,6 @@ class Inicio extends CI_Controller {
     
         
     }  
-      
 
     public function alta(){
         $this->load->library('form_validation');
@@ -69,9 +68,11 @@ class Inicio extends CI_Controller {
 
     public function detalles($norma,$tipo){
         $this->load->model('digestodb','',TRUE);
-        $relaciones = $this->digestodb->busqueda_relaciones($norma,$tipo);    
+        $relaciones = $this->digestodb->busqueda_relaciones($norma,$tipo); 
+        $relacionesinv = $this->digestodb->busqueda_relacionesinversas($norma,$tipo);     
         $norma = $this->digestodb->devuelve_norma($norma,$tipo);
         $data['relaciones'] = json_decode(json_encode($relaciones), True);
+        $data['relacionesinversas'] = json_decode(json_encode($relacionesinv), True);
         $data['norma'] = json_decode(json_encode($norma), True);
         $this->load->view('template/header',$data);
         $this->load->view('principal/detalles');
