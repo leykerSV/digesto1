@@ -1,4 +1,4 @@
-<div class="container-fluid">
+
 <?php echo form_open('inicio/busqueda/',array("class"=>"form-group")); ?>
 <small>
   
