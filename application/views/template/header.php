@@ -8,6 +8,7 @@
 
     <title>Digesto Santo Tomé</title>
 
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/redes.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/sticky.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/fontawesome.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
