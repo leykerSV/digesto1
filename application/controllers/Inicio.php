@@ -57,7 +57,26 @@ class Inicio extends CI_Controller {
         #$this->form_validation->set_rules('areaid','Area','required');
     
         if($this->form_validation->run()){              
-            echo 'Llegaste!!';
+            $data = array(
+                'tipo' => $this->input->post('tipo_norma'),
+                'numero' => $this->input->post('numero'),
+                'expedientechm' => $this->input->post('expedientechm'),
+                'fechasancion' => $this->input->post('fechasancion'),
+                'expedientedem' => $this->input->post('expedientedem'),
+                'fechapromulgacion' => $this->input->post('fechapromulgacion'),
+                'origen' => $this->input->post('origen'),
+                'autor' => $this->input->post('autor'),
+                'contenido' => $this->input->post('contenido'),
+                'observaciones' => $this->input->post('observaciones'),
+                'caracter' => $this->input->post('caracter'),
+                'alcance' => $this->input->post('alcance'),
+                'archivo' => $this->input->post('archivo'),
+                'archivoord' => $this->input->post('archivoord'),
+                'nrocaja' => $this->input->post('nrocaja'),
+                'nroorden' => $this->input->post('nroorden')
+            );
+            #Falta Estructura tematica 1 y 2
+            #Falta Descriptores
         }  
         $this->load->model('digestodb','',TRUE);
         $data['all_tipo'] = $this->digestodb->get_tipo();
@@ -70,10 +89,12 @@ class Inicio extends CI_Controller {
         $this->load->model('digestodb','',TRUE);
         $relaciones = $this->digestodb->busqueda_relaciones($norma,$tipo); 
         $relacionesinv = $this->digestodb->busqueda_relacionesinversas($norma,$tipo);     
-        $norma = $this->digestodb->devuelve_norma($norma,$tipo);
+        $norma_v = $this->digestodb->devuelve_norma($norma,$tipo);
+        $estructuratematica=$this->digestodb->devuelve_estructuratematica($norma,$tipo);
         $data['relaciones'] = json_decode(json_encode($relaciones), True);
         $data['relacionesinversas'] = json_decode(json_encode($relacionesinv), True);
-        $data['norma'] = json_decode(json_encode($norma), True);
+        $data['norma'] = json_decode(json_encode($norma_v), True);
+        $data['estructuratematica'] = json_decode(json_encode($estructuratematica), True);
         $this->load->view('template/header',$data);
         $this->load->view('principal/detalles');
         $this->load->view('template/footer');

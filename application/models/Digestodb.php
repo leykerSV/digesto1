@@ -131,4 +131,14 @@ Class Digestodb extends CI_Model
         $query->next_result();
         return $query->result();
     }
+
+    function devuelve_estructuratematica($norma,$tipo){
+        $this->load->database();
+        $sql = "call Estructuratematica(".$norma.", ".$tipo.")";
+        $query=$this->db->query($sql);
+        $a=$query->result();
+        $query->free_result();
+        $query->next_result();
+        return $query->result();
+    }
 }

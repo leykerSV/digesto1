@@ -1,3 +1,5 @@
+<?php echo form_open('inicio/alta/',array("class"=>"form-group")); ?>
+<small>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -54,7 +56,7 @@
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="fechapublicacion" name="fechasancion" type="text" placeholder="Fecha Publicación" class="form-control">
+                                <input id="fechapublicacion" name="fechapublicacion" type="text" placeholder="Fecha Publicación" class="form-control">
                             </div>
                             <?php echo form_error('fechapublicacion'); ?>
                         </div>
@@ -150,3 +152,5 @@
         </div>
     </div>
 </div>
+</small>
+<?php echo form_close(); ?>
