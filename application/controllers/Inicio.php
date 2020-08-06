@@ -46,44 +46,7 @@ class Inicio extends CI_Controller {
         $this->load->view('template/header',$data);
         $this->load->view('principal/main');
         $this->load->view('template/footer');
-    
-        
     }  
-
-    public function alta(){
-        $this->load->library('form_validation');
-    
-        $this->form_validation->set_rules('numero','Numero de Norma','required|numeric');
-        #$this->form_validation->set_rules('areaid','Area','required');
-    
-        if($this->form_validation->run()){              
-            $data = array(
-                'tipo' => $this->input->post('tipo_norma'),
-                'numero' => $this->input->post('numero'),
-                'expedientechm' => $this->input->post('expedientechm'),
-                'fechasancion' => $this->input->post('fechasancion'),
-                'expedientedem' => $this->input->post('expedientedem'),
-                'fechapromulgacion' => $this->input->post('fechapromulgacion'),
-                'origen' => $this->input->post('origen'),
-                'autor' => $this->input->post('autor'),
-                'contenido' => $this->input->post('contenido'),
-                'observaciones' => $this->input->post('observaciones'),
-                'caracter' => $this->input->post('caracter'),
-                'alcance' => $this->input->post('alcance'),
-                'archivo' => $this->input->post('archivo'),
-                'archivoord' => $this->input->post('archivoord'),
-                'nrocaja' => $this->input->post('nrocaja'),
-                'nroorden' => $this->input->post('nroorden')
-            );
-            #Falta Estructura tematica 1 y 2
-            #Falta Descriptores
-        }  
-        $this->load->model('digestodb','',TRUE);
-        $data['all_tipo'] = $this->digestodb->get_tipo();
-        $this->load->view('template/header',$data);
-        $this->load->view('principal/alta');
-        $this->load->view('template/footer');
-    }
 
     public function detalles($norma,$tipo){
         $this->load->model('digestodb','',TRUE);

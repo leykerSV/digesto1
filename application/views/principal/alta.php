@@ -1,4 +1,4 @@
-<?php echo form_open('inicio/alta/',array("class"=>"form-group")); ?>
+<?php echo form_open('alta/alta/',array("class"=>"form-group")); ?>
 <small>
 <div class="container">
     <div class="row">
