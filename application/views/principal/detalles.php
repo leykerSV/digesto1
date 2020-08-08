@@ -10,10 +10,10 @@
                         <a>Tipo de Norma:  <b><?php echo $norma[0]["nombre"]; ?></b></a>
                     </div>
                     <div class="input-group mb-3">
-                        <a>Expediente HCM: </a><b><?php echo $norma[0]["expedientechm"]; ?></b>
+                        <a>Expediente HCM: <b><?php echo $norma[0]["expedientechm"]; ?></b></a>
                     </div>
                     <div class="input-group mb-3">
-                        <a>Expediente DEM: </a><b><?php echo $norma[0]["expedientedem"]; ?></b>
+                        <a>Expediente DEM: <b><?php echo $norma[0]["expedientedem"]; ?></b></a>
                     </div>
                 </div>
             </div>
@@ -22,16 +22,16 @@
             <div class="card text-white bg-secondary mb-3">
                 <div class="card-body">
                     <div class="input-group mb-3">
-                        <a>Fecha de Sanción:  </a><b><?php echo date('d-m-Y',strtotime($norma[0]["fechasancion"])) ; ?></b> 
+                        <a>Fecha de Sanción:  <b><?php echo date('d-m-Y',strtotime($norma[0]["fechasancion"])) ; ?></b></a>
                     </div>
                     <div class="input-group mb-3">
-                        <a>Fecha de Promulgación:  </a><b><?php echo date('d-m-Y',strtotime($norma[0]["fechapromulgacion"])) ; ?></b>
+                        <a>Fecha de Promulgación:  <b><?php echo date('d-m-Y',strtotime($norma[0]["fechapromulgacion"])) ; ?></b></a>
                     </div>
                     <div class="input-group mb-3">
-                        <a>Origen: </a><b><?php echo $norma[0]["origen"]; ?></b> 
+                        <a>Origen: <b><?php echo $norma[0]["origen"]; ?></b></a> 
                     </div>
                     <div class="input-group mb-3">
-                        <a>Autor: </a><b><?php echo $norma[0]["autor"]; ?></b>
+                        <a>Autor: <b><?php echo $norma[0]["autor"]; ?></b></a>
                     </div>
                 </div>
             </div>
@@ -73,16 +73,16 @@
 
                 <div class="card-body">
                     <div class="input-group mb-3">
-                        <a>Caracter: </a><b><?php echo $norma[0]["caracter"]; ?></b> 
+                        <a>Caracter: <b><?php echo $norma[0]["caracter"]; ?></b></a> 
                     </div>
                     <div class="input-group mb-3">
-                        <a>Alcance: </a><b><?php echo $norma[0]["alcance"]; ?></b>
+                        <a>Alcance: </a><b><?php echo $norma[0]["alcance"]; ?></b></a>
                     </div>
                     <div class="input-group mb-3">
-                        <a>Caja: </a><b><?php echo $norma[0]["nrocaja"]; ?></b>
+                        <a>Caja: <b><?php echo $norma[0]["nrocaja"]; ?></b></a>
                     </div>
                     <div class="input-group mb-3">
-                        <a>Orden: </a><b><?php echo $norma[0]["nroorden"]; ?></b>
+                        <a>Orden: <b><?php echo $norma[0]["nroorden"]; ?></b></a>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                 <div class="card text-white bg-secondary mb-3">
                     <div class="card-body">
                         <div class="input-group mb-3">
-                            <a>Contenido: </a><b><?php echo $norma[0]["contenido"]; ?></b> 
+                            <a>Contenido: <b><?php echo $norma[0]["contenido"]; ?></b></a> 
                         </div>
                     </div>
                 </div>
@@ -100,13 +100,21 @@
                 <div class="card text-white bg-secondary mb-3">
                     <div class="card-body">
                         <div class="input-group mb-3">
-                            <a>Observaciones: </a><b><?php echo $norma[0]["observaciones"]; ?></b> 
+                            <a>Observaciones: <b><?php echo $norma[0]["observaciones"]; ?></b></a> 
                         </div>
                         <div class="input-group mb-3">
-                            <a>Archivo: </a><b><a class="text-muted" href="<?php echo base_url('/normas/'.$norma[0]["archivo"]); ?>" target="_blank"><?php echo $norma[0]["archivo"]; ?></a></b> 
+                            <?php if(!is_null($norma[0]["archivo"])){ ?>
+                                <a>Archivo: </a><b> <a href="<?php echo base_url('/normas/'.$norma[0]["archivo"]); ?>" target="_blank">Leer en Linea</a></b> 
+                            <?php } else {
+                                echo '<a>Archivo: <b>Sin Archivo</b></a>'; 
+                            }?>
                         </div>
                         <div class="input-group mb-3">
-                            <a>Archivo Ord: </a><b><a class="text-muted" href="<?php echo base_url('/normas/'.$norma[0]["archivoord"]); ?>" target="_blank"><?php echo $norma[0]["archivoord"]; ?></a></b> 
+                        <?php if(!is_null($norma[0]["archivoord"])){ ?>
+                            <a>Archivo Ord: </a><b> <a href="<?php echo base_url('/normas/'.$norma[0]["archivoord"]); ?>" target="_blank">Leer en Linea</a></b>
+                            <?php } else {
+                                echo '<a>Archivo Ord: <b>Sin Archivo</b></a>'; 
+                            }?>
                         </div>
                     </div>
                 </div>

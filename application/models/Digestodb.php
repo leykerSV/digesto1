@@ -141,4 +141,10 @@ Class Digestodb extends CI_Model
         $query->next_result();
         return $query->result();
     }
+
+    function nuevo($registro){
+        $this->load->database(); 
+        
+        return $this->db->insert('Normas', $registro);
+    }
 }

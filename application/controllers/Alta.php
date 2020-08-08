@@ -109,10 +109,8 @@ class Alta extends CI_Controller {
         #$this->form_validation->set_rules('areaid','Area','required');
     
         if($this->form_validation->run()){              
-            $data = array(
-                'tipo' => $this->input->post('tipo_norma'),
-                'numero' => $this->input->post('numero'),
-                'expedientechm' => $this->input->post('expedientechm'),
+            $nuevoregistro = array(
+                'tipo' => 1,//hm' => $this->input->post('expedientechm'),
                 'fechasancion' => $this->input->post('fechasancion'),
                 'expedientedem' => $this->input->post('expedientedem'),
                 'fechapromulgacion' => $this->input->post('fechapromulgacion'),
@@ -127,6 +125,9 @@ class Alta extends CI_Controller {
                 'nrocaja' => $this->input->post('nrocaja'),
                 'nroorden' => $this->input->post('nroorden')
             );
+            $this->load->model('digestodb','',TRUE);
+            $this->digestodb->nuevo($nuevoregistro);
+
             #Falta Estructura tematica 1 y 2
             #Falta Descriptores
         }  
