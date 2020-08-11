@@ -8,7 +8,7 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
   background: #ffffff;
-  background: linear-gradient(to right, #ffffff, #aaafb3);
+  background: #ffffff);
 }
 .footer {
   position: absolute;
