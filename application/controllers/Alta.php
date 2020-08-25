@@ -103,39 +103,48 @@ class Alta extends CI_Controller {
     /*Controlle de Inicio.
     */
     public function nuevo(){
-      $this-> check_log();
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('numero','Numero de Norma','required|numeric');
-        #$this->form_validation->set_rules('areaid','Area','required');
-    
-        if($this->form_validation->run()){              
-            $nuevoregistro = array(
-                'tipo' => 1,//hm' => $this->input->post('expedientechm'),
-                'fechasancion' => $this->input->post('fechasancion'),
-                'expedientedem' => $this->input->post('expedientedem'),
-                'fechapromulgacion' => $this->input->post('fechapromulgacion'),
-                'origen' => $this->input->post('origen'),
-                'autor' => $this->input->post('autor'),
-                'contenido' => $this->input->post('contenido'),
-                'observaciones' => $this->input->post('observaciones'),
-                'caracter' => $this->input->post('caracter'),
-                'alcance' => $this->input->post('alcance'),
-                'archivo' => $this->input->post('archivo'),
-                'archivoord' => $this->input->post('archivoord'),
-                'nrocaja' => $this->input->post('nrocaja'),
-                'nroorden' => $this->input->post('nroorden')
-            );
-            $this->load->model('digestodb','',TRUE);
-            $this->digestodb->nuevo($nuevoregistro);
+      #$this-> check_log();
+      $this->load->helper(array('form', 'url'));
+      $this->load->library('form_validation');
+      
 
-            #Falta Estructura tematica 1 y 2
-            #Falta Descriptores
-        }  
+    
+      if($this->form_validation->run())
+      { 
+        var_dump($this->input->post('tipo_norma'));      
+        die();       
+        $nuevoregistro = array(
+          'tipo' => 1,//hm' => $this->input->post('tipo_norma'),
+          'fechasancion' => $this->input->post('fechasancion'),
+          'expedientedem' => $this->input->post('expedientedem'),
+          'fechapromulgacion' => $this->input->post('fechapromulgacion'),
+          'origen' => $this->input->post('origen'),
+          'autor' => $this->input->post('autor'),
+          'contenido' => $this->input->post('contenido'),
+          'observaciones' => $this->input->post('observaciones'),
+          'caracter' => $this->input->post('caracter'),
+          'alcance' => $this->input->post('alcance'),
+          'archivo' => $this->input->post('archivo'),
+          'archivoord' => $this->input->post('archivoord'),
+          'nrocaja' => $this->input->post('nrocaja'),
+          'nroorden' => $this->input->post('nroorden')
+          );
+          $this->load->model('digestodb','',TRUE);
+          $this->digestodb->nuevo($nuevoregistro);
+
+          redirect('user/index');
+          #Falta Estructura tematica 1 y 2
+          #Falta Descriptores
+      }else{
+
         $this->load->model('digestodb','',TRUE);
         $data['all_tipo'] = $this->digestodb->get_tipo();
+        $data['_view'] = $this->load->view('principal/alta', $data, true);
+              
         $this->load->view('template/header',$data);
-        $this->load->view('principal/alta');
+        $this->load->view('principal/main2');
         $this->load->view('template/footer');
+      }
     }
 
 }

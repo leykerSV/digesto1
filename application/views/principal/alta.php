@@ -1,8 +1,7 @@
 <?php echo form_open('alta/nuevo/',array("class"=>"form-group")); ?>
 <small>
-<div class="container-fluid">
+<div class="form-group">
     <legend class="text-center header">Alta de Normativa</legend>
-        <fieldset>
             <div class="card">
             <div class="card-body">
             <div class="row">
@@ -11,18 +10,19 @@
                           <?php 
                             foreach($all_tipo as $tipo)
                               {
-                                echo '<option name="id"  name="tipo_norma" value="'.$tipo->codigo.'">'.$tipo->nombre.'</option>';
+                                echo '<option id="tipo_norma" name="tipo_norma" value="'.$tipo->codigo.'">'.$tipo->nombre.'</option>';
                               } 
                           ?>
                     </select>
+                    <span class="text-danger"><?php echo form_error('revisorid');?></span>
                 </div>
                 <div class="col-md-4">
                     <input id="numero" name="numero" type="numeric" placeholder="Numero de Norma" class="form-control">
-                    <?php echo form_error('numero'); ?>
+                    <span class="text-danger"><?php echo form_error('numero'); ?></span>
                 </div>
                 <div class="col-md-4">
                     <input id="expedientechm" name="expedientechm" type="text" placeholder="Expediente CHM" class="form-control">
-                    <?php echo form_error('expedientechm'); ?>
+                    <span class="text-danger"><?php echo form_error('expedientechm'); ?></span>
                 </div>
             </div>
             </div>
@@ -114,6 +114,5 @@
                     <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
                 </div>
             </div>
-        </fieldset>
 </div>                      
 <?php echo form_close(); ?>
