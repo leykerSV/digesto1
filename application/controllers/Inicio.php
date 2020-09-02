@@ -60,7 +60,7 @@ class Inicio extends CI_Controller {
         $data['estructuratematica'] = json_decode(json_encode($estructuratematica), True);
         $this->load->view('template/header',$data);
         $this->load->view('principal/detalles');
-        $this->load->view('template/footer');
+        //$this->load->view('template/footer');
     }
 
 }

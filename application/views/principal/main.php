@@ -39,10 +39,12 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-3" align="center">
-      
+    <div class="col-md-3" align="center">    
       <div class="alert alert-danger">Este Digesto contiene las normas desde el año 1984 en adelante</div>
+      <div class="info alert-info"><a href="<?php echo base_url('/normas/Instructivo.pdf'); ?>" target="_blank">Manual de Uso Digesto - Ver: 1.0</a></div>
     </div>
+
+
     <div class="col-md-9">
       <?php echo $_view; ?>
     </div>
