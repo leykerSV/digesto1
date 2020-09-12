@@ -109,6 +109,27 @@
             </div>
             </div>
             </div>
+
+            <div class="card">
+            <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <select class="form-control">
+                          <option id="relacion" name="relacion" value="1">Modifica a</option>
+                          <option id="relacion" name="relacion" value="2">Deroga en forma parcial a</option>
+                          <option id="relacion" name="relacion" value="3">Deroga en forma total a</option>
+                          <option id="relacion" name="relacion" value="4">Regalmenta a</option>
+                          <option id="relacion" name="relacion" value="5">Relacionada a</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <input id="archivoord" name="archivoord" type="text" placeholder="Archivo Ordenanza" class="form-control">
+                    <?php echo form_error('archivoord'); ?>
+                </div>
+            </div>
+            </div>
+            </div>
+
             <div class="form-group">
                 <div class="col-md-12 text-center">
                     <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
