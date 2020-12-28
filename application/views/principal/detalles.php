@@ -22,10 +22,20 @@
             <div class="card text-white bg-secondary mb-3">
                 <div class="card-body">
                     <div class="input-group mb-3">
-                        <a>Fecha de Sanción:  <b><?php echo date('d-m-Y',strtotime($norma[0]["fechasancion"])) ; ?></b></a>
+                    <?php if (is_null($norma[0]["fechasancion"])){ 
+                            echo '<th>Fecha de Sanción: -- </th>';    
+                        }else{ 
+                            echo '<a>Fecha de Sanción:  <b>' . date('d-m-Y',strtotime($norma[0]["fechasancion"])) . '</b></a>';
+                        }
+                    ?>
                     </div>
                     <div class="input-group mb-3">
-                        <a>Fecha de Promulgación:  <b><?php echo date('d-m-Y',strtotime($norma[0]["fechapromulgacion"])) ; ?></b></a>
+                    <?php if (is_null($norma[0]["fechapromulgacion"])){ 
+                            echo '<th>Fecha de Sanción: -- </th>';    
+                        }else{ 
+                            echo '<a>Fecha de Sanción:  <b>' . date('d-m-Y',strtotime($norma[0]["fechapromulgacion"])) . '</b></a>';
+                        }
+                    ?>
                     </div>
                     <div class="input-group mb-3">
                         <a>Origen: <b><?php echo $norma[0]["origen"]; ?></b></a> 
@@ -141,6 +151,11 @@
                             echo '<th>'.$relac['relacion'].'</th>';
                             echo '<th>'.$relac['nombrer'].'</th>';
                             echo '<th><a href="'.base_url('index.php/inicio/detalles/'.$relac['nronormar']."/".$relac['tiponormar']).'" target="_blank">'.$relac['nronormar'].'</th>';
+                            if (is_null($item['fechasancion'])){ 
+                                echo '<th> -- </th>';    
+                            }else{ 
+                                echo '<th>'. date('d-m-Y',strtotime($item['fechasancion'])) .'</th>';
+                            }
                             echo '<th>'.date('d-m-Y',strtotime($relac['fecha'])).'</th>';
                             echo '<th>'.$relac['observacion'].'</th>';
                             echo '</tr>';
@@ -172,7 +187,11 @@
                             echo '<th>'.$relac['relacion'].'</th>';
                             echo '<th>'.$relac['nombre'].'</th>';
                             echo '<th><a href="'.base_url('index.php/inicio/detalles/'.$relac['nronorma']."/".$relac['tiponorma']).'" target="_blank">'.$relac['nronorma'].'</th>';
-                            echo '<th>'.date('d-m-Y',strtotime($relac['fecha'])).'</th>';
+                            if (is_null($item['fechas'])){ 
+                                echo '<th> -- </th>';    
+                            }else{ 
+                                echo '<th>'. date('d-m-Y',strtotime($item['fecha'])) .'</th>';
+                            }
                             echo '<th>'.$relac['observacion'].'</th>';
                             echo '</tr>';
                         } 
